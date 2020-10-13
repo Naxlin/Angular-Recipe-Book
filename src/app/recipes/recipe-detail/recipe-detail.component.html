@@ -13,7 +13,7 @@
         <div class="btn-group" rbDropdown>
             <button type="button" class="btn btn-primary dropdown-toggle">Manage Recipe <span class="caret"></span></button>
             <ul class="dropdown-menu">
-                <li href="#">To Shopping List</li>
+                <li href="#" (click)="addToSL()">To Shopping List</li>
                 <li href="#">Edit Recipe</li>
                 <li href="#">Delete Recipe</li>
             </ul>
@@ -27,7 +27,11 @@
 </div>
 <div class="row">
     <div class="col-xs-12">
-        Ingredient
-        <!-- {{ recipeDetail.ingredient }} -->
+        <ul class="list-group">
+            <li class="list-group-item"
+                *ngFor="let ing of recipeDetail.ingredients">
+                {{ ing.name }} -- {{ ing.amount }}
+            </li>
+        </ul>
     </div>
 </div>
