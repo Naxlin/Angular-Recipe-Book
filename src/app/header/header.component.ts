@@ -1,4 +1,4 @@
-import { Component, EventEmitter, Output } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component ({
     selector: 'rb-header',
@@ -6,9 +6,5 @@ import { Component, EventEmitter, Output } from '@angular/core';
     styleUrls: []
 })
 export class HeaderComponent {
-    @Output() navigate = new EventEmitter<string>();
 
-    onSelect(feature: string) {
-        this.navigate.emit(feature);
-    }
 }
