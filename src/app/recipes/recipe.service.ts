@@ -10,12 +10,13 @@ import { Recipe } from './recipe.model';
 export class RecipeService {
   recipeSelector = new Subject<Recipe>();
   recipesChanged = new Subject<Recipe[]>();
-  private recipes: Recipe[] = [
-    new Recipe("test-recipe", "simply a test", "../../assets/images/recipe.jpg",
-               [new Ingredient("Meat", 1), new Ingredient("French Fries", 20)]),
-    new Recipe("test-recipe2", "simply a test", "../../assets/images/recipe.jpg",
-               [new Ingredient("Buns", 2), new Ingredient("Meat", 1)])
-  ];
+  private recipes: Recipe[] = [];
+  //  = [
+  //   new Recipe("test-recipe", "simply a test", "../../assets/images/recipe.jpg",
+  //              [new Ingredient("Meat", 1), new Ingredient("French Fries", 20)]),
+  //   new Recipe("test-recipe2", "simply a test", "../../assets/images/recipe.jpg",
+  //              [new Ingredient("Buns", 2), new Ingredient("Meat", 1)])
+  // ];
   constructor(private slService:ShoppingListService) { }
 
   getRecipes() {
@@ -24,6 +25,11 @@ export class RecipeService {
 
   getRecipe(id: number) {
     return this.recipes[id];
+  }
+
+  setRecipes(recipes: Recipe[]) {
+    this.recipes = recipes;
+    this.recipesChanged.next(this.recipes.slice());
   }
 
   addIngsToSL(ings: Ingredient[]) {
